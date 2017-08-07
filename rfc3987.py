@@ -245,7 +245,8 @@ _iri_rules = (
     ('iuserinfo',  r"(?:{iunreserved}|{pct_encoded}|{sub_delims}|:)*"),
     ('ihost',      r"(?:{IP_literal}|{IPv4address}|{ireg_name})"),
 
-    ('ireg_name',  r"(?:{iunreserved}|{pct_encoded}|{sub_delims})*"),
+    ('ireg_name',  r"(?:{iunreserved}+{tld}{iunreserved}*)|(?:{pct_encoded}|{sub_delims})*"),
+    ('tld', r"(?:\.(?:[a-zA-Z_~-]|{ucschar}){{2,}})"),
 
     ########   PATH   ########
     ('ipath',         (r"(?:{ipath_abempty}|{ipath_absolute}|{ipath_noscheme}"
